@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-color: #ffffff;
+  background-image: url("data:image/svg+xml,%3Csvg width='42' height='44' viewBox='0 0 42 44' xmlns='http://www.w3.org/2000/svg'%3E%3Cg id='Page-1' fill='none' fill-rule='evenodd'%3E%3Cg id='brick-wall' fill='%23000000' fill-opacity='0.08'%3E%3Cpath d='M0 0h42v44H0V0zm1 1h40v20H1V1zM0 23h20v20H0V23zm22 0h20v20H22V23z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  color: #000;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 700;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.quote {
+  &-container {
+    width: auto;
+    max-width: 90rem;
+    padding: 2rem 3rem;
+    border-radius: 1rem;
+    background-color: rgba(255, 255, 255, 0.4);
+    box-shadow: 0 1rem 1rem 1rem rgba(0, 0, 0, 0.2);
+  }
+
+  &-text {
+    font-size: 4.4rem;
+  }
+
+  &-author {
+    margin-top: 1.5rem;
+    font-size: 3.2rem;
+    font-weight: 400;
+    font-style: italic;
+  }
+}
+
+// for wrapping long quotes via javascript.
+.long-quote {
+  font-size: 3.2rem;
+}
+
+// icon adjustment.
+.fa-quote-left {
+  font-size: 6.4rem;
+}
+
+@include respond(tab-port) {
+  .quote-container {
+    margin: auto 1rem;
+  }
+
+  .quote-text {
+    font-size: 4rem;
+  }
+}

@@ -1,6 +1,25 @@
+/*
+0 - 600px:      Phone
+600 - 900px:    Tablet portrait
+900 - 1200px:   Tablet landscape
+[1200 - 1800] is where our normal styles apply
+1800px + :      Big desktop
+
+$breakpoint arguement choices:
+- phone
+- tab-port
+- tab-land
+- big-desktop
+
+ORDER: Base + typography > general layout + grid > page layout > components
+
+1em = 16px
+
+*/
 @import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap");
 html {
-  box-sizing: border-box; }
+  box-sizing: border-box;
+  font-size: 62.5%; }
 
 body {
   margin: 0;
@@ -14,3 +33,32 @@ body {
   display: flex;
   align-items: center;
   justify-content: center; }
+
+.quote-container {
+  width: auto;
+  max-width: 90rem;
+  padding: 2rem 3rem;
+  border-radius: 1rem;
+  background-color: rgba(255, 255, 255, 0.4);
+  box-shadow: 0 1rem 1rem 1rem rgba(0, 0, 0, 0.2); }
+
+.quote-text {
+  font-size: 4.4rem; }
+
+.quote-author {
+  margin-top: 1.5rem;
+  font-size: 3.2rem;
+  font-weight: 400;
+  font-style: italic; }
+
+.long-quote {
+  font-size: 3.2rem; }
+
+.fa-quote-left {
+  font-size: 6.4rem; }
+
+@media only screen and (max-width: 56.25em) {
+  .quote-container {
+    margin: auto 1rem; }
+  .quote-text {
+    font-size: 4rem; } }
