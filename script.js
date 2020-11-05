@@ -32,10 +32,22 @@ const apiUrl = "http://api.forismatic.com/api/1.0/?method=getQuote&lang=en&forma
    quoteText.innerText = data.quoteText;
 
  } catch (error) {
-     getQuote();
-     
+     getQuote(); 
  }
 }
+
+// For Tweeting Quotes
+function tweetQuote() {
+  const quote = quoteText.innerText;
+  const author = authorText.innerText;
+  const twitterUrl = `https://twitter.com/intent/tweet?text=${quote} \n — ${author}`;
+  window.open(twitterUrl, '_blank')
+}
+
+
+// Event Listeners
+newQuoteBtn.addEventListener('click', getQuote);
+twitterBtn.addEventListener('click', tweetQuote);
 
 
 // On Load
