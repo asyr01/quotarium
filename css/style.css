@@ -16,10 +16,11 @@ ORDER: Base + typography > general layout + grid > page layout > components
 1em = 16px
 
 */
-@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
 html {
   box-sizing: border-box;
-  font-size: 62.5%; }
+  font-size: 62.5%;
+}
 
 body {
   margin: 0;
@@ -32,7 +33,8 @@ body {
   text-align: center;
   display: flex;
   align-items: center;
-  justify-content: center; }
+  justify-content: center;
+}
 
 .quote-container {
   width: auto;
@@ -40,10 +42,12 @@ body {
   padding: 2rem 3rem;
   border-radius: 1rem;
   background-color: rgba(255, 255, 255, 0.4);
-  box-shadow: 0 1rem 1rem 1rem rgba(0, 0, 0, 0.2); }
+  box-shadow: 0 1rem 1rem 1rem rgba(0, 0, 0, 0.2);
+}
 
 .quote-text {
-  font-size: 4.4rem; }
+  font-size: 4.4rem;
+}
 
 .quote-author {
   margin-top: 1.5rem;
@@ -54,12 +58,14 @@ body {
   -webkit-background-clip: text;
   color: transparent;
   font-style: italic;
-  text-transform: uppercase; }
+  text-transform: uppercase;
+}
 
 .button-container {
   margin-top: 15px;
   display: flex;
-  justify-content: space-between; }
+  justify-content: space-between;
+}
 
 button {
   cursor: pointer;
@@ -72,28 +78,57 @@ button {
   outline: none;
   padding: 0.8rem 2.88rem;
   box-shadow: 0 0.3rem rgba(121, 121, 121, 0.65);
-  transition: all 0.2s; }
-  button:hover {
-    color: #333;
-    background-color: #fff; }
-  button:active {
-    transform: translate(0, 0.15rem);
-    box-shadow: 0 0.1rem rgba(255, 255, 255, 0.65); }
+  transition: all 0.2s;
+}
+button:hover {
+  color: #333;
+  background-color: #fff;
+}
+button:active {
+  transform: translate(0, 0.15rem);
+  box-shadow: 0 0.1rem rgba(255, 255, 255, 0.65);
+}
 
 .twitter-button:hover {
-  color: #38a1f3; }
+  color: #38a1f3;
+}
 
 .fa-twitter {
-  font-size: 2.4rem; }
+  font-size: 2.4rem;
+}
+
+/* Loader  */
+.loader {
+  border: 16px solid #f3f3f3; /* Light grey */
+  border-top: 16px solid #333; /* Blue */
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
 
 .long-quote {
-  font-size: 3.2rem; }
+  font-size: 3.2rem;
+}
 
 .fa-quote-left {
-  font-size: 6.4rem; }
+  font-size: 6.4rem;
+}
 
 @media only screen and (max-width: 56.25em) {
   .quote-container {
-    margin: auto 1rem; }
+    margin: auto 1rem;
+  }
   .quote-text {
-    font-size: 4rem; } }
+    font-size: 4rem;
+  }
+}
