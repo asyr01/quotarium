@@ -3,6 +3,9 @@ const quoteContainer = document.getElementById('quote-container');
 const quoteText = document.getElementById('quote');
 const authorText = document.getElementById('author');
 const twitterBtn = document.getElementById('twitter');
+const favBtn = document.getElementById('fav');
+const favQuoteNav = document.getElementById('favquote');
+const favAuthNav = document.getElementById('favauthor');
 const newQuoteBtn = document.getElementById('new-quote');
 const loader = document.getElementById('loader');
 
@@ -18,6 +21,8 @@ const loader = document.getElementById('loader');
    }
  }
 
+// Mark a quote as your favourite quote.
+
 // Get Quote From API
 async function getQuote () {
 showLoadingSpinner();
@@ -27,6 +32,12 @@ const apiUrl = "http://api.forismatic.com/api/1.0/?method=getQuote&lang=en&forma
  try {
    const response = await fetch(proxyUrl + apiUrl);
    const data = await response.json();
+   const quoteObj = {
+    quote: data.quoteText,
+    author: data.quoteAuthor
+}
+
+console.log(quoteObj.quote);
 
    // If Quote Author field is empty, so print Unknown.
    if(data.quoteAuthor === '') {
@@ -42,7 +53,8 @@ const apiUrl = "http://api.forismatic.com/api/1.0/?method=getQuote&lang=en&forma
   } else {
     quoteText.classList.remove('long-quote')
   }
-
+   
+   favBtn.classList.remove('clicked');
    quoteText.innerText = data.quoteText;
 
    removeLoadingSpinner();
@@ -62,11 +74,15 @@ function tweetQuote() {
   window.open(twitterUrl, '_blank')
 }
 
+function favQuote() {
+  favBtn.classList.toggle('clicked');
+  }
+
 
 // Event Listeners
 newQuoteBtn.addEventListener('click', getQuote);
 twitterBtn.addEventListener('click', tweetQuote);
-
+favBtn.addEventListener('click', favQuote)
 
 // On Load
 getQuote();

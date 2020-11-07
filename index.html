@@ -13,11 +13,30 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+
+    <div class="navigation">
+        <input type="checkbox" class="navigation__checkbox" id="navi-toggle">
+  
+        <label for="navi-toggle" class="navigation__button">
+          <span class="navigation__icon"></span>
+      </label>
+  
+        <div class="navigation__background">&nbsp;</div>
+        <nav class="navigation__nav">
+           <h1>My Favourite Quotes: </h1>
+           <div class="fav__container">
+               <div class="fav__quote"><span id="favquote">Lorem, ipsum dolor sit amet consectetur adipisicing elit.</span></div>
+               <div class="fav__author"><span id="favauthor">Lorem ipsum dolor sit amet.</span></div>
+           </div>
+        </nav>
+
     <div class="quote-container" id="quote-container">
         <!-- Quote -->
+        
         <div class="quote-text">
-          <i class="fas fa-quote-left"></i>
+            <i class="fas fa-quote-left"></i>
           <span id="quote"></span>
+          <i class="fas fa-quote-right"></i>
         </div>
         <!-- Author -->
         <div class="quote-author">
@@ -29,6 +48,11 @@
             <button class="twitter-button" id="twitter" title="Tweet This!">
                 <i class="fab fa-twitter"></i>
             </button>
+            
+            <button class="fav-button" id="fav" title="I liked it!">
+                <i class="fas fa-heart"></i>
+            </button>
+
             <button id="new-quote"><span id="">New Quote</span></button>
         </div>
     </div>

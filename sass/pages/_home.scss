@@ -8,15 +8,20 @@ html {
 body {
   margin: 0;
   min-height: 100vh;
-  background-color: #ffffff;
+  background-color: $color-cream;
   background-image: url("data:image/svg+xml,%3Csvg width='42' height='44' viewBox='0 0 42 44' xmlns='http://www.w3.org/2000/svg'%3E%3Cg id='Page-1' fill='none' fill-rule='evenodd'%3E%3Cg id='brick-wall' fill='%23000000' fill-opacity='0.08'%3E%3Cpath d='M0 0h42v44H0V0zm1 1h40v20H1V1zM0 23h20v20H0V23zm22 0h20v20H22V23z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-  color: #000;
+  color: $color-black;
   font-family: 'Source Sans Pro', sans-serif;
   font-weight: 700;
   text-align: center;
   display: flex;
   align-items: center;
   justify-content: center;
+
+  ::selection {
+    color: $color-coffee;
+    background: yellow;
+  }
 }
 
 .quote {
@@ -25,7 +30,7 @@ body {
     max-width: 90rem;
     padding: 2rem 3rem;
     border-radius: 1rem;
-    background-color: rgba(255, 255, 255, 0.4);
+    background-color: rgba($color-cream, 0.4);
     box-shadow: 0 1rem 1rem 1rem rgba(0, 0, 0, 0.2);
   }
 
@@ -37,7 +42,7 @@ body {
     margin-top: 1.5rem;
     font-size: 3.2rem;
     font-weight: 400;
-    background-image: linear-gradient(to bottom, #000, #ccc);
+    background-image: linear-gradient(to bottom, $color-black, #ccc);
     background-clip: text;
     -webkit-background-clip: text;
     color: transparent;
@@ -60,21 +65,33 @@ button {
   border: none;
   border-radius: 1rem;
   color: #fff;
-  background-color: #333;
+  background-color: $color-bitter;
   outline: none;
   padding: 0.8rem 2.88rem;
   box-shadow: 0 0.3rem rgba(121, 121, 121, 0.65);
   transition: all 0.2s;
 
   &:hover {
-    color: #333;
-    background-color: #fff;
+    color: $color-bitter;
+    background-color: $color-cream;
   }
 
   &:active {
     transform: translate(0, 0.15rem);
     box-shadow: 0 0.1rem rgba(255, 255, 255, 0.65);
   }
+}
+
+.fav-button {
+  margin-left: 7rem;
+  &:hover {
+    color: $color-coffee;
+  }
+}
+
+.clicked {
+  background-color: $color-cream;
+  color: red;
 }
 
 .twitter-button:hover {
@@ -85,14 +102,35 @@ button {
   font-size: 2.4rem;
 }
 
+/* Loader  */
+.loader {
+  border: 16px solid #f3f3f3;
+  border-top: 16px solid $color-coffee;
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 // for wrapping long quotes via javascript.
 .long-quote {
   font-size: 3.2rem;
 }
 
 // icon adjustment.
-.fa-quote-left {
-  font-size: 6.4rem;
+.fa-quote-left,
+.fa-quote-right {
+  font-size: 5rem;
+  color: $color-coffee;
 }
 
 @include respond(tab-port) {
