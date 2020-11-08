@@ -25,7 +25,10 @@ body {
 }
 
 .quote {
+  position: relative;
   &-container {
+    position: absolute;
+    @include absCenter;
     width: auto;
     max-width: 90rem;
     padding: 2rem 3rem;
@@ -56,6 +59,14 @@ body {
   margin-top: 15px;
   display: flex;
   justify-content: space-between;
+
+  & {
+    @include respond(tab-port) {
+      #new-quote {
+        font-size: 1.3rem;
+      }
+    }
+  }
 }
 
 button {
@@ -82,10 +93,16 @@ button {
   }
 }
 
+#new-quote {
+  @include respond(phone) {
+    font-size: 1rem;
+  }
+}
+
 .fav-button {
-  margin-left: 7rem;
-  &:hover {
-    color: $color-coffee;
+  @include respond(phone) {
+    margin-left: 2.5rem;
+    margin-right: 2.5rem;
   }
 }
 

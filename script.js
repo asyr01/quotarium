@@ -29,15 +29,16 @@ showLoadingSpinner();
 const proxyUrl = 'https://salty-harbor-31993.herokuapp.com/'
 const apiUrl = "http://api.forismatic.com/api/1.0/?method=getQuote&lang=en&format=json";
 
+
  try {
    const response = await fetch(proxyUrl + apiUrl);
    const data = await response.json();
    const quoteObj = {
     quote: data.quoteText,
     author: data.quoteAuthor
-}
+  }
 
-console.log(quoteObj.quote);
+ 
 
    // If Quote Author field is empty, so print Unknown.
    if(data.quoteAuthor === '') {
@@ -74,8 +75,13 @@ function tweetQuote() {
   window.open(twitterUrl, '_blank')
 }
 
+
+
 function favQuote() {
   favBtn.classList.toggle('clicked');
+  // if favbutton clicked, add that to the favourite quotes.
+    favQuoteNav.innerText = quoteObj.quote;
+    favAuthNav.innerText = quoteObj.author;
   }
 
 

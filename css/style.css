@@ -17,6 +17,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
 
 */
 @import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap");
 .navigation__checkbox {
   display: none; }
 
@@ -65,16 +66,28 @@ ORDER: Base + typography > general layout + grid > page layout > components
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 1500;
   opacity: 0;
   width: 0;
   transition: all 0.8s cubic-bezier(0.68, -0.6, 0.32, 1.6); }
 
 .navigation .fav__container {
-  background-color: orangered; }
+  display: grid;
+  grid-template-rows: repeat(15, 5rem);
+  grid-template-columns: 70rem 30rem;
+  background-color: orangered;
+  width: 100rem;
+  height: 80vh;
+  align-items: center;
+  justify-items: center; }
+
+.navigation .fav__quote {
+  font-size: 1.5rem; }
 
 .navigation__checkbox:checked ~ .navigation__background {
   transform: scale(80); }
+
+.navigation__checkbox:checked ~ .navigation__nav {
+  z-index: 1500; }
 
 .navigation__checkbox:checked ~ .navigation__nav {
   opacity: 1;
@@ -135,32 +148,40 @@ body {
     color: #600;
     background: yellow; }
 
-.quote-container {
-  width: auto;
-  max-width: 90rem;
-  padding: 2rem 3rem;
-  border-radius: 1rem;
-  background-color: rgba(255, 245, 238, 0.4);
-  box-shadow: 0 1rem 1rem 1rem rgba(0, 0, 0, 0.2); }
-
-.quote-text {
-  font-size: 4.4rem; }
-
-.quote-author {
-  margin-top: 1.5rem;
-  font-size: 3.2rem;
-  font-weight: 400;
-  background-image: linear-gradient(to bottom, #000, #ccc);
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
-  font-style: italic;
-  text-transform: uppercase; }
+.quote {
+  position: relative; }
+  .quote-container {
+    position: absolute;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: auto;
+    max-width: 90rem;
+    padding: 2rem 3rem;
+    border-radius: 1rem;
+    background-color: rgba(255, 245, 238, 0.4);
+    box-shadow: 0 1rem 1rem 1rem rgba(0, 0, 0, 0.2); }
+  .quote-text {
+    font-size: 4.4rem; }
+  .quote-author {
+    margin-top: 1.5rem;
+    font-size: 3.2rem;
+    font-weight: 400;
+    background-image: linear-gradient(to bottom, #000, #ccc);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    font-style: italic;
+    text-transform: uppercase; }
 
 .button-container {
   margin-top: 15px;
   display: flex;
   justify-content: space-between; }
+  @media only screen and (max-width: 56.25em) {
+    .button-container #new-quote {
+      font-size: 1.3rem; } }
 
 button {
   cursor: pointer;
@@ -181,10 +202,14 @@ button {
     transform: translate(0, 0.15rem);
     box-shadow: 0 0.1rem rgba(255, 255, 255, 0.65); }
 
-.fav-button {
-  margin-left: 7rem; }
-  .fav-button:hover {
-    color: #600; }
+@media only screen and (max-width: 37.5em) {
+  #new-quote {
+    font-size: 1rem; } }
+
+@media only screen and (max-width: 37.5em) {
+  .fav-button {
+    margin-left: 2.5rem;
+    margin-right: 2.5rem; } }
 
 .clicked {
   background-color: #fff5ee;

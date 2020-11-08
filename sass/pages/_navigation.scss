@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
+
 .navigation {
   &__checkbox {
     display: none;
@@ -54,7 +56,6 @@
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 1500;
     opacity: 0;
     width: 0;
     transition: all 0.8s cubic-bezier(0.68, -0.6, 0.32, 1.6);
@@ -62,7 +63,18 @@
 
   .fav {
     &__container {
+      display: grid;
+      grid-template-rows: repeat(15, 5rem);
+      grid-template-columns: 70rem 30rem;
       background-color: orangered;
+      width: 100rem;
+      height: 80vh;
+      align-items: center;
+      justify-items: center;
+    }
+
+    &__quote {
+      font-size: 1.5rem;
     }
   }
 
@@ -70,6 +82,11 @@
   &__checkbox:checked ~ &__background {
     transform: scale(80);
   }
+
+  &__checkbox:checked ~ &__nav {
+    z-index: 1500;
+  }
+
   &__checkbox:checked ~ &__nav {
     opacity: 1;
     width: 100%;
