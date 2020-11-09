@@ -196,7 +196,7 @@ button {
   box-shadow: 0 0.3rem rgba(121, 121, 121, 0.65);
   transition: all 0.2s; }
   button:hover {
-    color: #333;
+    color: #600;
     background-color: #fff5ee; }
   button:active {
     transform: translate(0, 0.15rem);

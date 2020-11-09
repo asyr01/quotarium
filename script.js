@@ -33,10 +33,6 @@ const apiUrl = "http://api.forismatic.com/api/1.0/?method=getQuote&lang=en&forma
  try {
    const response = await fetch(proxyUrl + apiUrl);
    const data = await response.json();
-   const quoteObj = {
-    quote: data.quoteText,
-    author: data.quoteAuthor
-  }
 
  
 
@@ -79,10 +75,28 @@ function tweetQuote() {
 
 function favQuote() {
   favBtn.classList.toggle('clicked');
-  // if favbutton clicked, add that to the favourite quotes.
-    favQuoteNav.innerText = quoteObj.quote;
-    favAuthNav.innerText = quoteObj.author;
-  }
+  const key = quoteText.innerText;
+  const value = authorText.innerText;
+
+ // if we have both key and value
+    if(key && value){
+       // and button is clicked
+      if(favBtn.classList.contains('clicked')){
+          localStorage.setItem(key,value);
+
+          for(let i = 0; i < localStorage.length; i++){
+            const key = localStorage.key(i);
+            const value = localStorage.getItem(key);
+            favQuoteNav.innerHTML += `${key} : ${value}<br /> <br />`;
+            
+        }
+      } else {
+        localStorage.removeItem(key);
+        favQuoteNav.innerText = '';
+        favAuthNav.innerText = '';
+      }
+    }
+}
 
 
 // Event Listeners
