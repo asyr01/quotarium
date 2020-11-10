@@ -21,6 +21,18 @@ ORDER: Base + typography > general layout + grid > page layout > components
 .navigation__checkbox {
   display: none; }
 
+.navigation .main {
+  flex: 1;
+  padding: 10px 20px; }
+
+.navigation h2 {
+  border-bottom: 1px solid #111;
+  padding-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  font-weight: 300;
+  margin: 0 0 20px; }
+
 .navigation__button {
   background-color: #fff5ee;
   height: 7rem;
@@ -81,7 +93,10 @@ ORDER: Base + typography > general layout + grid > page layout > components
   justify-items: center; }
 
 .navigation .fav__quote {
-  font-size: 1.5rem; }
+  display: flex;
+  justify-content: space-between;
+  font-size: 20px;
+  margin-bottom: 10px; }
 
 .navigation__checkbox:checked ~ .navigation__background {
   transform: scale(80); }
