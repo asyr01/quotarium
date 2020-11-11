@@ -82,12 +82,11 @@ function updateDOM(providedData = data ) {
   main.innerHTML = `<h2><strong>Quote</strong>Author</h2>`;
   //take providedData
     providedData.forEach((item) => {
-        const key = localStorage.key(item);
-        const value = localStorage.getItem(key);
         const element = document.createElement('div');
         element.classList.add('fav__quote');
-        element.innerHTML = `<strong>${key}</strong> <i>${value}<i>`;
+        element.innerHTML = `<strong>${item.quote}</strong> <i>${item.author}<i>`;
         main.appendChild(element);
+      
      });
   }
 
