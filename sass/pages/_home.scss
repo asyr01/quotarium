@@ -35,6 +35,16 @@ body {
     border-radius: 1rem;
     background-color: rgba($color-cream, 0.4);
     box-shadow: 0 1rem 1rem 1rem rgba(0, 0, 0, 0.2);
+
+    @include respond(tab-port) {
+      .quote-container {
+        margin: auto 0rem;
+      }
+
+      .quote-text {
+        font-size: 4rem;
+      }
+    }
   }
 
   &-text {
@@ -148,14 +158,4 @@ button {
 .fa-quote-right {
   font-size: 5rem;
   color: $color-coffee;
-}
-
-@include respond(tab-port) {
-  .quote-container {
-    margin: auto 1rem;
-  }
-
-  .quote-text {
-    font-size: 4rem;
-  }
 }

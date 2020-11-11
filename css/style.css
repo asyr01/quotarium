@@ -26,20 +26,22 @@ ORDER: Base + typography > general layout + grid > page layout > components
   padding: 10px 20px; }
 
 .navigation h2 {
+  font-weight: 100;
+  color: red;
   border-bottom: 1px solid #111;
   padding-bottom: 10px;
   display: flex;
   justify-content: space-between;
   font-weight: 300;
-  margin: 0 0 20px; }
+  margin: 0 3rem; }
 
 .navigation__button {
   background-color: #fff5ee;
-  height: 7rem;
-  width: 7rem;
+  height: 5rem;
+  width: 5rem;
   position: fixed;
-  top: 6rem;
-  right: 6rem;
+  top: 1rem;
+  right: 3rem;
   border-radius: 50%;
   z-index: 2000;
   box-shadow: o 1rem 3rem rgba(0, 0, 0, 0.1);
@@ -51,16 +53,16 @@ ORDER: Base + typography > general layout + grid > page layout > components
       right: 4rem; } }
   @media only screen and (max-width: 37.5em) {
     .navigation__button {
-      top: 3rem;
+      top: -1rem;
       right: 3rem; } }
 
 .navigation__background {
-  height: 6rem;
-  width: 6rem;
+  height: 5rem;
+  width: 5rem;
   border-radius: 50%;
   position: fixed;
-  top: 6.5rem;
-  right: 6.5rem;
+  top: 1rem;
+  right: 3rem;
   background-color: #fff5ee;
   z-index: 1000;
   transition: transform 0.8s cubic-bezier(0.83, 0, 0.17, 1); }
@@ -70,10 +72,11 @@ ORDER: Base + typography > general layout + grid > page layout > components
       right: 4.5rem; } }
   @media only screen and (max-width: 37.5em) {
     .navigation__background {
-      top: 3rem;
+      top: -1rem;
       right: 3rem; } }
 
 .navigation__nav {
+  margin-top: 3rem;
   height: 100vh;
   position: fixed;
   top: 0;
@@ -96,7 +99,9 @@ ORDER: Base + typography > general layout + grid > page layout > components
   display: flex;
   justify-content: space-between;
   font-size: 20px;
-  margin-bottom: 10px; }
+  margin-bottom: 3rem;
+  margin-right: 1rem;
+  margin-left: 1rem; }
 
 .navigation__checkbox:checked ~ .navigation__background {
   transform: scale(80); }
@@ -177,6 +182,11 @@ body {
     border-radius: 1rem;
     background-color: rgba(255, 245, 238, 0.4);
     box-shadow: 0 1rem 1rem 1rem rgba(0, 0, 0, 0.2); }
+    @media only screen and (max-width: 56.25em) {
+      .quote-container .quote-container {
+        margin: auto 0rem; }
+      .quote-container .quote-text {
+        font-size: 4rem; } }
   .quote-text {
     font-size: 4.4rem; }
   .quote-author {
@@ -258,9 +268,3 @@ button {
 .fa-quote-right {
   font-size: 5rem;
   color: #600; }
-
-@media only screen and (max-width: 56.25em) {
-  .quote-container {
-    margin: auto 1rem; }
-  .quote-text {
-    font-size: 4rem; } }

@@ -23,7 +23,7 @@ let data = []; // we'll putt all data to here
    }
  }
 
-// Mark a quote as your favourite quote.
+
 
 // Get Quote From API
 async function getQuote () {
@@ -35,12 +35,12 @@ const apiUrl = "http://api.forismatic.com/api/1.0/?method=getQuote&lang=en&forma
    const response = await fetch(proxyUrl + apiUrl);
    const data = await response.json();
    const newQuote = {
-     quote: `${data.quoteText}`,
-     author: `${data.quoteAuthor}`, 
+     quote: data.quoteText,
+     author: data.quoteAuthor,
    };
+  
+    addData(newQuote);
 
-   addData(newQuote);
-   
 
    // If Quote Author field is empty, so print Unknown.
    if(newQuote.author === '') {
@@ -71,24 +71,25 @@ const apiUrl = "http://api.forismatic.com/api/1.0/?method=getQuote&lang=en&forma
 
 // For adding new quote to the data array.
 function addData(obj){
-  data.push(obj);
-}
-
-// update DOM --forEach--
-function updateDOM(providedData = data) {
-  // Clear main div
-  main.innerHTML = '<h2><strong>Quote</strong>Author</h2>';
-  //take providedData
   if(favBtn.classList.contains('clicked')){
-    providedData.forEach((item) => {
-      const element = document.createElement('div');
-      element.classList.add('fav__quote');
-      element.innerHTML = `<strong>${item.quote}</strong> <i>${item.author}<i>`;
-      main.appendChild(element);
-     });
+    data.push(obj);
   }
 }
 
+// update DOM --forEach--
+function updateDOM(providedData = data ) {
+  // Clear main div
+  main.innerHTML = `<h2><strong>Quote</strong>Author</h2>`;
+  //take providedData
+    providedData.forEach((item) => {
+        const key = localStorage.key(item);
+        const value = localStorage.getItem(key);
+        const element = document.createElement('div');
+        element.classList.add('fav__quote');
+        element.innerHTML = `<strong>${key}</strong> <i>${value}<i>`;
+        main.appendChild(element);
+     });
+  }
 
 // For Tweeting Quotes
 function tweetQuote() {
@@ -99,12 +100,11 @@ function tweetQuote() {
 }
 
 
-
+// Mark a quote as your favourite quote.
 function favQuote() {
   favBtn.classList.toggle('clicked');
-  const key = quoteText.innerText;
-  const value = authorText.innerText;
-
+  key = quoteText.innerText;
+  value = authorText.innerText;
  // if we have both key and value
     if(key && value){
        // and button is clicked
@@ -121,7 +121,7 @@ function favQuote() {
 // Event Listeners
 newQuoteBtn.addEventListener('click', getQuote);
 twitterBtn.addEventListener('click', tweetQuote);
-favBtn.addEventListener('click', favQuote)
+favBtn.addEventListener('click', favQuote);
 
 // On Load
 getQuote();
