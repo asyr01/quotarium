@@ -38,9 +38,8 @@ const apiUrl = "http://api.forismatic.com/api/1.0/?method=getQuote&lang=en&forma
      quote: data.quoteText,
      author: data.quoteAuthor,
    };
-  
-    addData(newQuote);
-
+    
+   addData(newQuote);
 
    // If Quote Author field is empty, so print Unknown.
    if(newQuote.author === '') {
@@ -56,10 +55,11 @@ const apiUrl = "http://api.forismatic.com/api/1.0/?method=getQuote&lang=en&forma
   } else {
     quoteText.classList.remove('long-quote')
   }
-   
-   favBtn.classList.remove('clicked');
-   quoteText.innerText = newQuote.quote;
+    
+   favBtn.classList.remove('clicked');  
 
+   quoteText.innerText = newQuote.quote;
+ 
    removeLoadingSpinner();
       
 
@@ -73,6 +73,8 @@ const apiUrl = "http://api.forismatic.com/api/1.0/?method=getQuote&lang=en&forma
 function addData(obj){
   if(favBtn.classList.contains('clicked')){
     data.push(obj);
+  } else {
+    console.log('error');
   }
 }
 
@@ -85,8 +87,7 @@ function updateDOM(providedData = data ) {
         const element = document.createElement('div');
         element.classList.add('fav__quote');
         element.innerHTML = `<strong>${item.quote}</strong> <i>${item.author}<i>`;
-        main.appendChild(element);
-      
+        main.appendChild(element); 
      });
   }
 
@@ -121,6 +122,7 @@ function favQuote() {
 newQuoteBtn.addEventListener('click', getQuote);
 twitterBtn.addEventListener('click', tweetQuote);
 favBtn.addEventListener('click', favQuote);
+
 
 // On Load
 getQuote();
