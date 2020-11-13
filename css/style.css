@@ -204,7 +204,7 @@ body {
     margin-top: 1.5rem;
     font-size: 3.2rem;
     font-weight: 400;
-    background-image: linear-gradient(to bottom, #000, #ccc);
+    background-image: linear-gradient(to bottom, #ca4246 50%, #e16541 50%);
     background-clip: text;
     -webkit-background-clip: text;
     color: transparent;
