@@ -103,23 +103,27 @@
 
   .fav {
     &__container {
-      display: grid;
-      grid-template-rows: repeat(15, 5rem);
-      grid-template-columns: 70rem 30rem;
-      background-color: orangered;
       width: 100rem;
-      height: 80vh;
-      align-items: center;
-      justify-items: center;
+      height: 100vh;
+      @include absCenter;
+      @include respond(phone) {
+        width: 37rem;
+      }
     }
 
     &__quote {
       display: flex;
+      align-self: flex-start;
       justify-content: space-between;
-      font-size: 20px;
+      font-size: 3.5rem;
       margin-bottom: 3rem;
       margin-right: 1rem;
       margin-left: 1rem;
+      background-color: #ccc;
+      @include respond(phone) {
+        font-size: 1.6rem;
+        margin-bottom: 1.5rem;
+      }
     }
 
     &-quotes {
@@ -131,11 +135,18 @@
     position: absolute;
     top: 2rem;
     left: 9rem;
+    @include respond(phone) {
+      position: absolute;
+      font-size: 1.5rem;
+      padding: 1.2rem;
+      top: 0rem;
+      left: 4rem;
+    }
   }
 
   //FUNCTIONALITY
   &__checkbox:checked ~ &__background {
-    transform: scale(80);
+    transform: scale(950);
   }
 
   &__checkbox:checked ~ &__nav {

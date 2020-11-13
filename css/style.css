@@ -98,22 +98,29 @@ ORDER: Base + typography > general layout + grid > page layout > components
   transition: all 0.8s cubic-bezier(0.68, -0.6, 0.32, 1.6); }
 
 .navigation .fav__container {
-  display: grid;
-  grid-template-rows: repeat(15, 5rem);
-  grid-template-columns: 70rem 30rem;
-  background-color: orangered;
   width: 100rem;
-  height: 80vh;
-  align-items: center;
-  justify-items: center; }
+  height: 100vh;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); }
+  @media only screen and (max-width: 37.5em) {
+    .navigation .fav__container {
+      width: 37rem; } }
 
 .navigation .fav__quote {
   display: flex;
+  align-self: flex-start;
   justify-content: space-between;
-  font-size: 20px;
+  font-size: 3.5rem;
   margin-bottom: 3rem;
   margin-right: 1rem;
-  margin-left: 1rem; }
+  margin-left: 1rem;
+  background-color: #ccc; }
+  @media only screen and (max-width: 37.5em) {
+    .navigation .fav__quote {
+      font-size: 1.6rem;
+      margin-bottom: 1.5rem; } }
 
 .navigation .fav-quotes {
   position: relative; }
@@ -122,9 +129,16 @@ ORDER: Base + typography > general layout + grid > page layout > components
   position: absolute;
   top: 2rem;
   left: 9rem; }
+  @media only screen and (max-width: 37.5em) {
+    .navigation #fav__clear {
+      position: absolute;
+      font-size: 1.5rem;
+      padding: 1.2rem;
+      top: 0rem;
+      left: 4rem; } }
 
 .navigation__checkbox:checked ~ .navigation__background {
-  transform: scale(80); }
+  transform: scale(950); }
 
 .navigation__checkbox:checked ~ .navigation__nav {
   z-index: 1500; }
