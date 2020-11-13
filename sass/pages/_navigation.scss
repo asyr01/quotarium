@@ -92,6 +92,7 @@
   &__nav {
     margin-top: 3rem;
     height: 100vh;
+    overflow-y: scroll;
     position: fixed;
     top: 0;
     left: 0;
@@ -120,6 +121,16 @@
       margin-right: 1rem;
       margin-left: 1rem;
     }
+
+    &-quotes {
+      position: relative;
+    }
+  }
+
+  #fav__clear {
+    position: absolute;
+    top: 2rem;
+    left: 9rem;
   }
 
   //FUNCTIONALITY
@@ -149,6 +160,7 @@
       background-color: $color-coffee;
       display: inline-block;
     }
+
     &::before,
     &::after {
       content: '';

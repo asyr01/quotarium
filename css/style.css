@@ -89,6 +89,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
 .navigation__nav {
   margin-top: 3rem;
   height: 100vh;
+  overflow-y: scroll;
   position: fixed;
   top: 0;
   left: 0;
@@ -113,6 +114,14 @@ ORDER: Base + typography > general layout + grid > page layout > components
   margin-bottom: 3rem;
   margin-right: 1rem;
   margin-left: 1rem; }
+
+.navigation .fav-quotes {
+  position: relative; }
+
+.navigation #fav__clear {
+  position: absolute;
+  top: 2rem;
+  left: 9rem; }
 
 .navigation__checkbox:checked ~ .navigation__background {
   transform: scale(80); }

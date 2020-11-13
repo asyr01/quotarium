@@ -4,6 +4,7 @@ const quoteText = document.getElementById('quote');
 const authorText = document.getElementById('author');
 const twitterBtn = document.getElementById('twitter');
 const favBtn = document.getElementById('fav');
+const deleteFavs = document.getElementById('fav__clear');
 const main = document.getElementById('fav-quotes');
 const newQuoteBtn = document.getElementById('new-quote');
 const loader = document.getElementById('loader');
@@ -31,6 +32,7 @@ const apiUrl = "http://api.forismatic.com/api/1.0/?method=getQuote&lang=en&forma
  try {
    const response = await fetch(proxyUrl + apiUrl);
    const data = await response.json();
+  
  
    // If Quote Author field is empty, so print Unknown.
    if(data.authorText === '') {
@@ -60,6 +62,12 @@ const apiUrl = "http://api.forismatic.com/api/1.0/?method=getQuote&lang=en&forma
 
 // update hamburger's DOM 
 function updateDOM() {
+  // Check if local storage is empty
+    if(localStorage.length < 1){
+      deleteFavs.style.display = "none";
+     }else {
+      deleteFavs.style.display = "block";
+     }
   // Clear main div
   main.innerHTML = `<h2><strong>Quote</strong>Author</h2>`;
   //take providedData
@@ -79,6 +87,13 @@ function tweetQuote() {
   window.open(twitterUrl, '_blank')
 }
 
+
+
+// Delete favourite quotes
+function deleteFavourites()  {
+  localStorage.clear();
+  location.reload();
+}
 
 // Mark a quote as your favourite quote.
 function favQuote() {
@@ -103,7 +118,7 @@ function favQuote() {
 newQuoteBtn.addEventListener('click', getQuote);
 twitterBtn.addEventListener('click', tweetQuote);
 favBtn.addEventListener('click', favQuote);
-
+deleteFavs.addEventListener('click', deleteFavourites);
 
 // On Load
 getQuote();
