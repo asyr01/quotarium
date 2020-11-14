@@ -45,8 +45,8 @@
 
   &__button {
     background-color: $color-cream;
-    height: 5rem;
-    width: 5rem;
+    height: 7rem;
+    width: 7rem;
     position: fixed;
     top: 1rem;
     right: 3rem;
@@ -62,8 +62,8 @@
     }
 
     @include respond(phone) {
-      top: -1rem;
-      right: 3rem;
+      top: 0.5rem;
+      right: 1rem;
     }
   }
 
@@ -84,8 +84,8 @@
     }
 
     @include respond(phone) {
-      top: -1rem;
-      right: 3rem;
+      top: 0.5rem;
+      right: 1rem;
     }
   }
 
