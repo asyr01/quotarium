@@ -6,8 +6,14 @@ const twitterBtn = document.getElementById('twitter');
 const favBtn = document.getElementById('fav');
 const deleteFavs = document.getElementById('fav__clear');
 const main = document.getElementById('fav-quotes');
+const back = document.getElementById('back');
 const newQuoteBtn = document.getElementById('new-quote');
 const loader = document.getElementById('loader');
+
+// we will keep previous quote.
+let data = [];
+let prevQuote = '';
+let prevAuthor = '';
 
 updateDOM() 
 
@@ -32,8 +38,16 @@ const apiUrl = "http://api.forismatic.com/api/1.0/?method=getQuote&lang=en&forma
  try {
    const response = await fetch(proxyUrl + apiUrl);
    const data = await response.json();
-  
- 
+
+   const newQuote = {
+    quote: data.quoteText,
+    author: data.quoteAuthor
+   }
+
+
+
+   addData(newQuote);
+
    // If Quote Author field is empty, so print Unknown.
    if(data.authorText === '') {
      authorText.innerText = 'Unknown'
@@ -50,6 +64,8 @@ const apiUrl = "http://api.forismatic.com/api/1.0/?method=getQuote&lang=en&forma
   }
   
    favBtn.classList.remove('clicked');  
+   back.classList.remove('disabled');
+   
    quoteText.innerText = data.quoteText;
    removeLoadingSpinner();
 
@@ -58,6 +74,16 @@ const apiUrl = "http://api.forismatic.com/api/1.0/?method=getQuote&lang=en&forma
  }
 }
 
+// adding data to array
+function addData(obj) {
+  data.push(obj);
+  if (data.length > 2) {
+      data.shift();
+    }
+    prevQuote = data[0].quote;
+    prevAuthor = data[0].author;
+    console.log(prevQuote);
+ } 
 
 
 // update hamburger's DOM 
@@ -87,8 +113,6 @@ function tweetQuote() {
   window.open(twitterUrl, '_blank')
 }
 
-
-
 // Delete favourite quotes
 function deleteFavourites()  {
   localStorage.clear();
@@ -113,12 +137,28 @@ function favQuote() {
       }
      } 
 
+  // For calling previous quote
+  function callPrevQuote() {
+     if(data.length >= 1){
+       console.log(data.length);
+       back.classList.add('disabled');
+       quoteText.innerText = prevQuote;
+       authorText.innerText = prevAuthor;
+      
+     } else{
+      back.classList.remove('unable');
+     }
+  }
+ 
+  callPrevQuote();
+
 
 // Event Listeners
 newQuoteBtn.addEventListener('click', getQuote);
 twitterBtn.addEventListener('click', tweetQuote);
 favBtn.addEventListener('click', favQuote);
 deleteFavs.addEventListener('click', deleteFavourites);
+back.addEventListener('click', callPrevQuote);
 
 // On Load
 getQuote();
