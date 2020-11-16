@@ -2,15 +2,15 @@
 const quoteContainer = document.getElementById('quote-container');
 const quoteText = document.getElementById('quote');
 const authorText = document.getElementById('author');
+const backBtn = document.getElementById('back');
 const twitterBtn = document.getElementById('twitter');
 const favBtn = document.getElementById('fav');
-const deleteFavs = document.getElementById('fav__clear');
-const main = document.getElementById('fav-quotes');
-const back = document.getElementById('back');
 const newQuoteBtn = document.getElementById('new-quote');
+const deleteFavs = document.getElementById('fav__clear');
+const fav = document.getElementById('fav-quotes');
 const loader = document.getElementById('loader');
 
-// we will keep previous quote.
+// we will keep previous quote in array and values inside the assigned variables.
 let data = [];
 let prevQuote = '';
 let prevAuthor = '';
@@ -44,8 +44,6 @@ const apiUrl = "http://api.forismatic.com/api/1.0/?method=getQuote&lang=en&forma
     author: data.quoteAuthor
    }
 
-
-
    addData(newQuote);
 
    // If Quote Author field is empty, so print Unknown.
@@ -64,7 +62,7 @@ const apiUrl = "http://api.forismatic.com/api/1.0/?method=getQuote&lang=en&forma
   }
   
    favBtn.classList.remove('clicked');  
-   back.classList.remove('disabled');
+   backBtn.classList.remove('disabled');
    
    quoteText.innerText = data.quoteText;
    removeLoadingSpinner();
@@ -82,7 +80,6 @@ function addData(obj) {
     }
     prevQuote = data[0].quote;
     prevAuthor = data[0].author;
-    console.log(prevQuote);
  } 
 
 
@@ -94,14 +91,14 @@ function updateDOM() {
      }else {
       deleteFavs.style.display = "block";
      }
-  // Clear main div
-  main.innerHTML = `<h2><strong>Quote</strong>Author</h2>`;
-  //take providedData
+    // Clear fav div
+    fav.innerHTML = `<h2><strong>Quote</strong>Author</h2>`;
+
     for(let i = 0; i < localStorage.length; i++) {
       const element = document.createElement('div');
       element.classList.add('fav__quote');
       element.innerHTML = `<strong>${localStorage.key(i)}</strong> <i class="cool-text">${localStorage.getItem(localStorage.key(i))}<i>`;
-      main.appendChild(element); 
+      fav.appendChild(element); 
     }
   }
 
@@ -113,10 +110,10 @@ function tweetQuote() {
   window.open(twitterUrl, '_blank')
 }
 
-// Delete favourite quotes
+// Clear favourite quotes in the fav section.
 function deleteFavourites()  {
   localStorage.clear();
-  location.reload();
+  updateDOM();
 }
 
 // Mark a quote as your favourite quote.
@@ -140,16 +137,15 @@ function favQuote() {
   // For calling previous quote
   function callPrevQuote() {
      if(data.length >= 1){
-       console.log(data.length);
-       back.classList.add('disabled');
+       backBtn.classList.add('disabled');
        quoteText.innerText = prevQuote;
        authorText.innerText = prevAuthor;
       
      } else{
-      back.classList.remove('unable');
+      backBtn.classList.remove('disabled');
      }
   }
- 
+
   callPrevQuote();
 
 
@@ -158,7 +154,7 @@ newQuoteBtn.addEventListener('click', getQuote);
 twitterBtn.addEventListener('click', tweetQuote);
 favBtn.addEventListener('click', favQuote);
 deleteFavs.addEventListener('click', deleteFavourites);
-back.addEventListener('click', callPrevQuote);
+backBtn.addEventListener('click', callPrevQuote);
 
 // On Load
 getQuote();
