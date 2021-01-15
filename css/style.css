@@ -311,7 +311,11 @@ button {
     transform: rotate(360deg); } }
 
 .long-quote {
-  font-size: 2rem; }
+  font-size: 3rem; }
+  @media only screen and (max-width: 37.5em) {
+    .long-quote {
+      font-size: 2rem;
+      line-height: 0px; } }
 
 .fa-quote-left,
 .fa-quote-right {

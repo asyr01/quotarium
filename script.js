@@ -55,7 +55,7 @@ const apiUrl = "http://api.forismatic.com/api/1.0/?method=getQuote&lang=en&forma
 
   // Reduce font size for longer quotes than 120 characters.
 
-  if(data.quoteText.length > 120) {
+  if(data.quoteText.length > 100) {
     quoteText.classList.add('long-quote')
   } else {
     quoteText.classList.remove('long-quote')
